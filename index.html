@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raw Connect | The Pattern Library & Diagnostics</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#050505',
+                            white: '#FAFAFA',
+                            crimson: '#8B0000',
+                            gray: '#A1A1AA'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::selection { background-color: #8B0000; color: #FAFAFA; }
+        .bg-clinical-void { background: radial-gradient(circle at 50% 0%, #1a0505 0%, #050505 60%); }
+        .view-section { display: none; min-height: 80vh; }
+        .view-section.active { display: block; animation: fadeInUp 0.4s ease forwards; }
+    </style>
+</head>
+<body class="bg-brand-black bg-clinical-void text-brand-white font-sans antialiased min-h-screen flex flex-col selection:bg-brand-crimson">
+
+    <header class="w-full py-6 px-6 md:px-12 flex justify-between items-center fixed top-0 z-50 backdrop-blur-md bg-brand-black/80 border-b border-white/5">
+        <div class="flex items-center gap-2 cursor-pointer group" onclick="navigate('view-hub')">
+            <span class="font-serif text-3xl tracking-widest relative">
+                RAW
+                <span class="absolute text-brand-crimson -left-2 opacity-90 scale-110" style="mix-blend-mode: screen;">C</span>
+            </span>
+        </div>
+        <nav>
+            <ul class="flex gap-8 text-xs sm:text-sm font-medium tracking-widest uppercase text-brand-gray">
+                <li><button onclick="navigate('view-hub')" class="hover:text-brand-white transition-colors duration-300 tracking-widest uppercase text-xs sm:text-sm">The Library</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="app-container" class="flex-grow pt-32 pb-10">
+
+        <div id="view-hub" class="view-section active">
+            <main class="flex flex-col items-center pt-8 pb-20 px-6">
+                <section class="max-w-4xl text-center flex flex-col items-center min-h-[50vh] justify-center">
+                    <span class="opacity-0 animate-fade-in-up uppercase tracking-[0.2em] text-brand-crimson text-xs sm:text-sm font-semibold mb-6 block">
+                        The Pattern Library // Protocol 01
+                    </span>
+                    <h1 class="opacity-0 animate-fade-in-up [animation-delay:150ms] font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-8 text-balance">
+                        Five Patterns. <br class="hidden md:block"/>
+                        <span class="text-white/70 italic">One Of Them Is Yours.</span>
+                    </h1>
+                    <p class="opacity-0 animate-fade-in-up [animation-delay:300ms] text-brand-gray text-base sm:text-lg md:text-xl max-w-2xl font-light leading-relaxed mb-12">
+                        Every pattern below kept someone safe once. Read the one that sounds like you — then take the free Decoder to find out for sure.
+                    </p>
+                    <div class="opacity-0 animate-fade-in-up [animation-delay:450ms] flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
+                        <a href="https://app.youform.com/forms/6lbb18lc?utm_source=hub&utm_medium=website&utm_content=hub_hero" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto bg-brand-white text-brand-black font-semibold uppercase tracking-wider text-sm overflow-hidden transition-all duration-300 hover:bg-brand-crimson hover:text-brand-white">
+                            <span class="relative z-10 flex items-center gap-2">
+                                Take the Free 60-Second Decoder
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <section class="w-full max-w-7xl mx-auto px-6 py-24 sm:py-32 border-t border-white/5">
+                <div class="mb-16 md:flex md:justify-between md:items-end">
+                    <div class="max-w-2xl">
+                        <h2 class="font-serif text-3xl sm:text-4xl text-brand-white mb-4">Read Yours</h2>
+                        <p class="text-brand-gray text-lg font-light leading-relaxed">Deconstructing the nervous system's survival loops. Select a behavioral pattern below to audit the mechanics of the defense.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <button onclick="navigate('view-pattern-1')" class="text-left group block flex flex-col p-8 sm:p-10 border border-white/10 bg-white/[0.01] hover:bg-brand-black hover:border-brand-crimson transition-all duration-500 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        <span class="text-brand-crimson text-xs tracking-[0.2em] uppercase font-semibold">Pattern 01</span>
+                        <h3 class="font-serif text-2xl mt-4 mb-4 text-brand-white group-hover:text-white transition-colors">The Withdrawal Pattern</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed flex-grow">You don't lose interest when it gets boring. You lose interest when it gets real — because real means it can be lost.</p>
+                        <div class="mt-8 text-xs uppercase tracking-widest text-white/40 group-hover:text-brand-crimson transition-colors flex items-center gap-2">
+                            Read the full breakdown <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </button>
+
+                    <button onclick="navigate('view-pattern-2')" class="text-left group block flex flex-col p-8 sm:p-10 border border-white/10 bg-white/[0.01] hover:bg-brand-black hover:border-brand-crimson transition-all duration-500 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        <span class="text-brand-crimson text-xs tracking-[0.2em] uppercase font-semibold">Pattern 02</span>
+                        <h3 class="font-serif text-2xl mt-4 mb-4 text-brand-white group-hover:text-white transition-colors">The Reassurance Loop</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed flex-grow">It's never really about the text that took three hours. It's about every time before, when someone going quiet meant something was about to end.</p>
+                        <div class="mt-8 text-xs uppercase tracking-widest text-white/40 group-hover:text-brand-crimson transition-colors flex items-center gap-2">
+                            Read the full breakdown <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </button>
+
+                    <button onclick="navigate('view-pattern-3')" class="text-left group block flex flex-col p-8 sm:p-10 border border-white/10 bg-white/[0.01] hover:bg-brand-black hover:border-brand-crimson transition-all duration-500 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        <span class="text-brand-crimson text-xs tracking-[0.2em] uppercase font-semibold">Pattern 03</span>
+                        <h3 class="font-serif text-2xl mt-4 mb-4 text-brand-white group-hover:text-white transition-colors">The People-Pleaser Pattern</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed flex-grow">You say yes when you mean no — then spend days resenting it without ever saying why.</p>
+                        <div class="mt-8 text-xs uppercase tracking-widest text-white/40 group-hover:text-brand-crimson transition-colors flex items-center gap-2">
+                            Read the full breakdown <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </button>
+
+                    <button onclick="navigate('view-pattern-4')" class="text-left group block flex flex-col p-8 sm:p-10 border border-white/10 bg-white/[0.01] hover:bg-brand-black hover:border-brand-crimson transition-all duration-500 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        <span class="text-brand-crimson text-xs tracking-[0.2em] uppercase font-semibold">Pattern 04</span>
+                        <h3 class="font-serif text-2xl mt-4 mb-4 text-brand-white group-hover:text-white transition-colors">The Control Loop</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed flex-grow">When plans go vague, you need to pin them down. To you, it's keeping things from falling apart. To everyone else, it's pressure.</p>
+                        <div class="mt-8 text-xs uppercase tracking-widest text-white/40 group-hover:text-brand-crimson transition-colors flex items-center gap-2">
+                            Read the full breakdown <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </button>
+
+                    <button onclick="navigate('view-pattern-5')" class="text-left group block flex flex-col p-8 sm:p-10 border border-white/10 bg-white/[0.01] hover:bg-brand-black hover:border-brand-crimson transition-all duration-500 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        <span class="text-brand-crimson text-xs tracking-[0.2em] uppercase font-semibold">Pattern 05</span>
+                        <h3 class="font-serif text-2xl mt-4 mb-4 text-brand-white group-hover:text-white transition-colors">The Over-Giver Pattern</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed flex-grow">You weren't born "easy to be around." You learned that being easy was the safest way to stay wanted.</p>
+                        <div class="mt-8 text-xs uppercase tracking-widest text-white/40 group-hover:text-brand-crimson transition-colors flex items-center gap-2">
+                            Read the full breakdown <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <section class="w-full max-w-7xl mx-auto px-6 py-24 sm:py-32 border-t border-white/5">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    <div>
+                        <h2 class="font-serif text-3xl sm:text-5xl text-brand-white mb-8 text-balance">The Somatic Architecture</h2>
+                        <p class="text-brand-gray text-base sm:text-lg font-light leading-relaxed mb-6">
+                            The Hub is our central repository for uncompromised relational mechanics. We do not deal in generic dating advice or motivational validation. 
+                        </p>
+                        <p class="text-brand-gray text-base sm:text-lg font-light leading-relaxed mb-10">
+                            We map the neurobiological responses that dictate your behavior. If you want to stop repeating the exact same destructive loops with different faces, you have to decode the blueprint driving the machine.
+                        </p>
+                    </div>
+                    
+                    <div class="relative pl-8 sm:pl-12 border-l-2 border-brand-crimson">
+                        <blockquote class="font-serif text-2xl sm:text-3xl italic text-white/90 leading-tight">
+                            "Healing in isolation is an illusion because your nervous system has total control of the environment. <span class="text-brand-crimson">True repair requires relational friction.</span>"
+                        </blockquote>
+                        <p class="mt-6 text-brand-gray text-xs tracking-[0.2em] uppercase font-semibold">— Raw Connect Architecture</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="view-pattern-1" class="view-section pt-10 px-6 sm:px-8 max-w-3xl mx-auto">
+            <button onclick="navigate('view-hub')" class="text-brand-gray hover:text-brand-white uppercase tracking-widest text-xs font-semibold mb-12 flex items-center gap-2 transition-colors">
+                ← Back to Patterns
+            </button>
+            <header class="mb-16 border-b border-white/10 pb-12">
+                <span class="uppercase tracking-[0.2em] text-brand-crimson text-xs font-semibold mb-4 block">Pattern Breakdown 01</span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight mb-6 text-brand-white">The Withdrawal Pattern</h1>
+                <p class="text-brand-gray text-lg sm:text-xl font-light leading-relaxed">You don't lose interest when it gets boring. You lose interest when it gets real — because real means it can be lost.</p>
+            </header>
+            <div class="prose prose-invert max-w-none text-brand-gray font-light leading-loose text-base sm:text-lg">
+                <p class="mb-8">To the outside world, you appear highly independent, selective, and deeply self-sufficient. You rarely ask for help, and you pride yourself on not "needing" anyone. You might even label yourself as just having extremely high standards. But the internal, neurobiological reality is fundamentally different.</p>
+                <p class="mb-8">The Withdrawal Pattern is not about a lack of desire for connection. It is an advanced, highly calibrated defense mechanism. Somewhere along the line, your nervous system subconscious linked <em>intimacy</em> with <em>suffocation</em> or <em>loss of autonomy</em>.</p>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-16 mb-6">The Somatic Blueprint</h2>
+                <p class="mb-8">When a relationship begins, things feel safe because there is a natural, built-in distance. The chase is engaging. But the moment the connection deepens—the moment someone expects consistency, relies on you emotionally, or shifts from "potential" to "actual"—your body registers a threat.</p>
+                <ul class="list-none pl-0 mb-12 space-y-6">
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Deactivation Loop</strong>
+                        You suddenly begin noticing minor flaws in your partner. Their chewing, their texting habits, or their tone of voice suddenly becomes deeply irritating. This is your nervous system manufacturing a reason to create distance.
+                    </li>
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Phantom Ex</strong>
+                        You often find yourself idealizing past relationships or longing for an imagined perfect partner, ensuring no real, present person can ever get too close.
+                    </li>
+                </ul>
+                <div class="my-16 relative pl-8 sm:pl-10 border-l-2 border-brand-crimson py-2">
+                    <blockquote class="font-serif text-2xl sm:text-3xl italic text-brand-white leading-snug">
+                        "Your overwhelming need for 'space' is rarely about the other person. It is a desperate attempt to regain control over your own dysregulated nervous system."
+                    </blockquote>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-12 mb-6">The Cost of the Loop</h2>
+                <p class="mb-8">You keep leaving great connections right before the breakthrough, convinced that "they just weren't the right one." But the common denominator in the cycle isn't them. It's the survival script running in your body.</p>
+                
+                <div class="mt-16 p-8 sm:p-10 border border-white/10 bg-white/[0.02] text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson"></div>
+                    <h3 class="font-serif text-2xl text-brand-white mb-4">Is your body executing this script?</h3>
+                    <p class="text-brand-gray text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">Your intellect understands this, but logic won't stop the pattern from firing. You must map the exact somatic triggers driving your withdrawal.</p>
+                    <a href="https://app.youform.com/forms/6lbb18lc?utm_source=breakdown&utm_medium=website&utm_content=withdrawal" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-brand-white text-brand-black font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-brand-crimson hover:text-brand-white">Initialize The 60-Second Decoder</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-pattern-2" class="view-section pt-10 px-6 sm:px-8 max-w-3xl mx-auto">
+            <button onclick="navigate('view-hub')" class="text-brand-gray hover:text-brand-white uppercase tracking-widest text-xs font-semibold mb-12 flex items-center gap-2 transition-colors">
+                ← Back to Patterns
+            </button>
+            <header class="mb-16 border-b border-white/10 pb-12">
+                <span class="uppercase tracking-[0.2em] text-brand-crimson text-xs font-semibold mb-4 block">Pattern Breakdown 02</span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight mb-6 text-brand-white">The Reassurance Loop</h1>
+                <p class="text-brand-gray text-lg sm:text-xl font-light leading-relaxed">It's never really about the text that took three hours. It's about every time before, when someone going quiet meant something was about to end.</p>
+            </header>
+            <div class="prose prose-invert max-w-none text-brand-gray font-light leading-loose text-base sm:text-lg">
+                <p class="mb-8">To the outside world, you are incredibly devoted, loving, and attentive. You remember the little things and give your all. But internally, your nervous system is running on a high-alert surveillance system, constantly scanning your partner for micro-shifts in tone, availability, or affection.</p>
+                <p class="mb-8">The Reassurance Loop is driven by a deep, somatic fear of abandonment. Your nervous system has learned that consistency is fragile, and the only way to ensure survival is to constantly audit the connection.</p>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-16 mb-6">The Somatic Blueprint</h2>
+                <ul class="list-none pl-0 mb-12 space-y-6">
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Panic Spike</strong>
+                        When a text is delayed or a partner seems "off," you don't just wonder why. You feel a physiological drop in your stomach, a spike in heart rate, and an immediate rush of intrusive thoughts assuming the worst.
+                    </li>
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">Protest Behavior</strong>
+                        To manage the anxiety, you engage in covert tactics to force engagement. This could be sending multiple messages, withdrawing entirely to see if they'll chase you, or starting an argument just to feel connected.
+                    </li>
+                </ul>
+                <div class="my-16 relative pl-8 sm:pl-10 border-l-2 border-brand-crimson py-2">
+                    <blockquote class="font-serif text-2xl sm:text-3xl italic text-brand-white leading-snug">
+                        "You exhaust yourself fighting for reassurance from partners, when what you are actually fighting is the memory of everyone who ever left."
+                    </blockquote>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-12 mb-6">The Cost of the Loop</h2>
+                <p class="mb-8">By constantly demanding proof that they won't leave, you ironically create the exact suffocation that pushes them away. The exhaustion of the cycle kills the organic intimacy you are so desperately trying to protect.</p>
+                
+                <div class="mt-16 p-8 sm:p-10 border border-white/10 bg-white/[0.02] text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson"></div>
+                    <h3 class="font-serif text-2xl text-brand-white mb-4">Is your body executing this script?</h3>
+                    <p class="text-brand-gray text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">Stop letting an anxious nervous system dictate your behavior.</p>
+                    <a href="https://app.youform.com/forms/6lbb18lc?utm_source=breakdown&utm_medium=website&utm_content=reassurance" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-brand-white text-brand-black font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-brand-crimson hover:text-brand-white">Initialize The 60-Second Decoder</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-pattern-3" class="view-section pt-10 px-6 sm:px-8 max-w-3xl mx-auto">
+            <button onclick="navigate('view-hub')" class="text-brand-gray hover:text-brand-white uppercase tracking-widest text-xs font-semibold mb-12 flex items-center gap-2 transition-colors">
+                ← Back to Patterns
+            </button>
+            <header class="mb-16 border-b border-white/10 pb-12">
+                <span class="uppercase tracking-[0.2em] text-brand-crimson text-xs font-semibold mb-4 block">Pattern Breakdown 03</span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight mb-6 text-brand-white">The People-Pleaser Pattern</h1>
+                <p class="text-brand-gray text-lg sm:text-xl font-light leading-relaxed">You say yes when you mean no — then spend days resenting it without ever saying why.</p>
+            </header>
+            <div class="prose prose-invert max-w-none text-brand-gray font-light leading-loose text-base sm:text-lg">
+                <p class="mb-8">Society tells you that you're just "too nice" or "too selfless." But true selflessness is a choice. People-pleasing is a trauma response. It is the subconscious belief that your boundaries make you unlovable, and your compliance keeps you safe.</p>
+                <p class="mb-8">When confronted with conflict or an opportunity to advocate for yourself, your nervous system automatically bypasses "fight" or "flight" and goes straight into "fawn."</p>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-16 mb-6">The Somatic Blueprint</h2>
+                <ul class="list-none pl-0 mb-12 space-y-6">
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Fawn Response</strong>
+                        When someone crosses a line, instead of feeling anger, you feel panic. You instinctively smile, agree, and apologize, prioritizing their emotional regulation over your own integrity.
+                    </li>
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Resentment Build</strong>
+                        Because your boundaries are constantly violated (by your own permission), physical tension builds in your neck, jaw, and shoulders. You harbor intense, silent resentment toward the very people you are bending over backwards to please.
+                    </li>
+                </ul>
+                <div class="my-16 relative pl-8 sm:pl-10 border-l-2 border-brand-crimson py-2">
+                    <blockquote class="font-serif text-2xl sm:text-3xl italic text-brand-white leading-snug">
+                        "You are not managing other people's feelings because you are deeply empathetic. You are doing it because other people's negative emotions feel like a physical threat to your safety."
+                    </blockquote>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-12 mb-6">The Cost of the Loop</h2>
+                <p class="mb-8">You build relationships where you are loved entirely for your utility, not your authenticity. You feel desperately lonely even in a crowded room, because nobody actually knows the real you—they only know the mask you wear to keep them comfortable.</p>
+                
+                <div class="mt-16 p-8 sm:p-10 border border-white/10 bg-white/[0.02] text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson"></div>
+                    <h3 class="font-serif text-2xl text-brand-white mb-4">Is your body executing this script?</h3>
+                    <p class="text-brand-gray text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">Locate the exact trigger that forces you to abandon yourself.</p>
+                    <a href="https://app.youform.com/forms/6lbb18lc?utm_source=breakdown&utm_medium=website&utm_content=pleaser" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-brand-white text-brand-black font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-brand-crimson hover:text-brand-white">Initialize The 60-Second Decoder</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-pattern-4" class="view-section pt-10 px-6 sm:px-8 max-w-3xl mx-auto">
+            <button onclick="navigate('view-hub')" class="text-brand-gray hover:text-brand-white uppercase tracking-widest text-xs font-semibold mb-12 flex items-center gap-2 transition-colors">
+                ← Back to Patterns
+            </button>
+            <header class="mb-16 border-b border-white/10 pb-12">
+                <span class="uppercase tracking-[0.2em] text-brand-crimson text-xs font-semibold mb-4 block">Pattern Breakdown 04</span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight mb-6 text-brand-white">The Control Loop</h1>
+                <p class="text-brand-gray text-lg sm:text-xl font-light leading-relaxed">When plans go vague, you need to pin them down. To you, it's keeping things from falling apart. To everyone else, it's pressure.</p>
+            </header>
+            <div class="prose prose-invert max-w-none text-brand-gray font-light leading-loose text-base sm:text-lg">
+                <p class="mb-8">You are likely the "planner" in your group. The reliable one. You handle the logistics because if you don't, you genuinely believe it will all collapse. But your hyper-independence and need for control aren't personality quirks—they are a shield.</p>
+                <p class="mb-8">The Control Loop stems from a childhood or past relationship where the environment was chaotic, unpredictable, or where you had to grow up too fast. You learned that relying on others results in profound disappointment.</p>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-16 mb-6">The Somatic Blueprint</h2>
+                <ul class="list-none pl-0 mb-12 space-y-6">
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Ambiguity Threat</strong>
+                        When a partner says "we'll figure it out later" or leaves a situation unresolved, you feel a visceral spike of anxiety in your chest. Uncertainty registers in your brain as danger.
+                    </li>
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Fixer Drive</strong>
+                        Instead of letting things unfold naturally, you compulsively step in to manage, organize, and dictate. You tell yourself you are just "being helpful," but really, you are self-soothing your own anxiety by controlling the outcome.
+                    </li>
+                </ul>
+                <div class="my-16 relative pl-8 sm:pl-10 border-l-2 border-brand-crimson py-2">
+                    <blockquote class="font-serif text-2xl sm:text-3xl italic text-brand-white leading-snug">
+                        "You complain that nobody ever takes care of you, while simultaneously making it aggressively impossible for anyone to try."
+                    </blockquote>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-12 mb-6">The Cost of the Loop</h2>
+                <p class="mb-8">You naturally attract people who are perfectly happy to let you do all the emotional and logistical heavy lifting. You end up exhausted, carrying the entire weight of the relationship, bitter that your partner doesn't "step up"—blind to the fact that your defense mechanism never left them any room to do so.</p>
+                
+                <div class="mt-16 p-8 sm:p-10 border border-white/10 bg-white/[0.02] text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson"></div>
+                    <h3 class="font-serif text-2xl text-brand-white mb-4">Is your body executing this script?</h3>
+                    <p class="text-brand-gray text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">Map the exact mechanics of your control reflex.</p>
+                    <a href="https://app.youform.com/forms/6lbb18lc?utm_source=breakdown&utm_medium=website&utm_content=control" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-brand-white text-brand-black font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-brand-crimson hover:text-brand-white">Initialize The 60-Second Decoder</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-pattern-5" class="view-section pt-10 px-6 sm:px-8 max-w-3xl mx-auto">
+            <button onclick="navigate('view-hub')" class="text-brand-gray hover:text-brand-white uppercase tracking-widest text-xs font-semibold mb-12 flex items-center gap-2 transition-colors">
+                ← Back to Patterns
+            </button>
+            <header class="mb-16 border-b border-white/10 pb-12">
+                <span class="uppercase tracking-[0.2em] text-brand-crimson text-xs font-semibold mb-4 block">Pattern Breakdown 05</span>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight mb-6 text-brand-white">The Over-Giver Pattern</h1>
+                <p class="text-brand-gray text-lg sm:text-xl font-light leading-relaxed">You weren't born "easy to be around." You learned that being easy was the safest way to stay wanted.</p>
+            </header>
+            <div class="prose prose-invert max-w-none text-brand-gray font-light leading-loose text-base sm:text-lg">
+                <p class="mb-8">The Over-Giver operates on a hidden transactional ledger. You pour immense amounts of energy, money, time, and emotional labor into your partners. You are hailed as the "best partner ever." But this generosity is not truly free.</p>
+                <p class="mb-8">It is a high-friction mechanism to control abandonment. Subconsciously, your nervous system operates on the rule: <em>If I make myself completely indispensable to them, they cannot possibly leave me.</em></p>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-16 mb-6">The Somatic Blueprint</h2>
+                <ul class="list-none pl-0 mb-12 space-y-6">
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">Deficit Spending</strong>
+                        You give resources (emotional or physical) that you literally do not have. You will stay up until 3 AM solving your partner's problems while your own life falls apart, feeling a compulsive, biological <em>need</em> to fix them.
+                    </li>
+                    <li class="pl-6 border-l border-white/20 relative">
+                        <div class="absolute w-2 h-2 bg-brand-crimson rounded-full -left-[4.5px] top-2"></div>
+                        <strong class="text-brand-white font-medium block mb-1">The Invisible Wall</strong>
+                        When someone tries to do something nice for you, or give back to you, you physically deflect. Your chest tightens, you make a joke, and you refuse to receive it. Receiving feels unsafe because it strips you of the "savior" leverage.
+                    </li>
+                </ul>
+                <div class="my-16 relative pl-8 sm:pl-10 border-l-2 border-brand-crimson py-2">
+                    <blockquote class="font-serif text-2xl sm:text-3xl italic text-brand-white leading-snug">
+                        "Equating total utility with basic safety is a trauma response. You are paying rent for a space in someone's life that should be yours for free."
+                    </blockquote>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl text-brand-white mt-12 mb-6">The Cost of the Loop</h2>
+                <p class="mb-8">You create a dynamic where you become the parent, and they become the dependent. This dynamic brutally kills romantic and sexual polarity, often leading to a relationship that feels more like a caretaking facility than a partnership.</p>
+                
+                <div class="mt-16 p-8 sm:p-10 border border-white/10 bg-white/[0.02] text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-crimson"></div>
+                    <h3 class="font-serif text-2xl text-brand-white mb-4">Is your body executing this script?</h3>
+                    <p class="text-brand-gray text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">Identify the somatic trigger forcing you to over-invest.</p>
+                    <a href="https://app.youform.com/forms/6lbb18lc?utm_source=breakdown&utm_medium=website&utm_content=overgiver" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-brand-white text-brand-black font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-brand-crimson hover:text-brand-white">Initialize The 60-Second Decoder</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="w-full border-t border-white/5 py-24 sm:py-32 px-6 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-serif text-3xl sm:text-4xl text-brand-white mb-6">Still Not Sure Which One's Yours?</h2>
+            <p class="text-brand-gray text-base sm:text-lg font-light leading-relaxed mb-10">
+                That's exactly what the Decoder is for. Six quick questions, about 60 seconds, no email required to see your somatic result.
+            </p>
+            <a href="https://app.youform.com/forms/6lbb18lc?utm_source=hub&utm_medium=website&utm_content=hub_footer" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto bg-brand-white text-brand-black font-semibold uppercase tracking-wider text-sm overflow-hidden transition-all duration-300 hover:bg-brand-crimson hover:text-brand-white">
+                <span class="relative z-10 flex items-center gap-2">
+                    Take the Decoder
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="w-full border-t border-white/5 py-12 text-center px-6">
+        <p class="text-brand-gray/50 text-[11px] sm:text-xs font-light leading-relaxed max-w-4xl mx-auto mb-6">
+            This is a self-reflection tool for educational purposes only. It is not a diagnosis, therapy, or medical advice, and is not a substitute for professional mental health support. If you are in crisis, please reach out to a licensed therapist, or a crisis line in your country (for example, 988 in the US and Canada, or Samaritans on 116 123 in the UK).
+        </p>
+        <p class="text-brand-gray/30 text-[10px] uppercase tracking-widest">© 2026 Raw Connect Enterprises</p>
+    </footer>
+
+    <script>
+        function navigate(targetId) {
+            // Hide all views
+            const views = document.querySelectorAll('.view-section');
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // Show target view
+            const targetView = document.getElementById(targetId);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
